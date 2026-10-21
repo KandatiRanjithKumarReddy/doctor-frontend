@@ -10,9 +10,9 @@ This frontend application is part of a complete 3-tier healthcare appointment ec
 
 | Component | Description | Live Deployment / Repository |
 | :--- | :--- | :--- |
-| **🌐 Frontend (This Repo)** | Patient portal for booking & payments | [Live Website](https://meetourdoctor.vercel.app) *(or your Vercel URL)* |
-| **🛡️ Admin & Doctor Panel** | Portal for managing appointments, schedules & doctors | [Live Admin Panel](https://doctor-admin-lemon.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-admin) |
-| **⚙️ Backend REST API** | Node.js / Express / MongoDB / Cloudinary / Razorpay | [API Endpoint](https://doctor-backend-sigma.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-backend) |
+| **🌐 Frontend (This Repo)** | Patient portal for booking & payments | [Live ](https://doctor-frontend-eosin.vercel.app/)  |
+| **🛡️ Admin & Doctor Panel** | Portal for managing appointments, schedules & doctors | [Live ](https://doctor-admin-lemon.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-admin) |
+| **⚙️ Backend REST API** | Node.js / Express / MongoDB / Cloudinary / Razorpay | [Live ](https://doctor-backend-sigma.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-backend) |
 
 ---
 
