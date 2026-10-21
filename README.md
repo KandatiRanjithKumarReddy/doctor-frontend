@@ -1,18 +1,34 @@
-# Frontend - MeetOurDoctor Healthcare Appointment Booking System
+# 🩺 MeetOurDoctor - Healthcare Appointment Booking System (Frontend)
+
+> **Patient-facing web application for browsing verified doctors, booking appointment slots, and processing online consultation payments.**
+
+---
+
+## 🔗 Project Ecosystem & Repositories
+
+This frontend application is part of a complete 3-tier healthcare appointment ecosystem:
+
+| Component | Description | Live Deployment / Repository |
+| :--- | :--- | :--- |
+| **🌐 Frontend (This Repo)** | Patient portal for booking & payments | [Live Website](https://meetourdoctor.vercel.app) *(or your Vercel URL)* |
+| **🛡️ Admin & Doctor Panel** | Portal for managing appointments, schedules & doctors | [Live Admin Panel](https://doctor-admin-lemon.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-admin) |
+| **⚙️ Backend REST API** | Node.js / Express / MongoDB / Cloudinary / Razorpay | [API Endpoint](https://doctor-backend-sigma.vercel.app) • [GitHub Repo](https://github.com/KandatiRanjithKumarReddy/doctor-backend) |
+
+---
 
 ## ✨ Overview
 
-The **Frontend** application is the patient-facing interface of the MeetOurDoctor platform. It allows users to explore trusted doctors by medical specialty, book appointment slots, make secure online payments via Razorpay, and manage personal profiles and booking history.
+The **Frontend** application is the patient-facing interface of the MeetOurDoctor platform. It allows users to explore trusted doctors by medical specialty, book appointment slots, make secure online payments via Razorpay (INR ₹), and manage personal profiles and booking history.
 
-**Key Points:**
+**Key Features:**
 
-* Intuitive, responsive interface tailored for healthcare seekers.
-* User registration, login, and secure JWT session handling.
-* Doctor directory with real-time filtering across 6 specialties.
-* 7-day appointment slot picker with 30-minute intervals.
-* Integrated Razorpay payment gateway for online consultation payments.
-* Profile management and appointment history tracking.
-* Responsive design optimized for desktop and mobile devices.
+* **Intuitive & Responsive UI:** Modern medical interface tailored for desktop, tablet, and mobile devices.
+* **Specialist Directory:** Real-time doctor discovery across 6 core specialties (General Physician, Gynecologist, Dermatologist, Pediatrician, Neurologist, Gastroenterologist).
+* **7-Day Dynamic Slot Booking:** Interactive 30-minute interval scheduler with instant availability checking.
+* **Integrated Payments:** Seamless Razorpay payment gateway integration supporting Indian Rupee (₹ / INR) transactions.
+* **User Authentication:** Secure JWT-based patient registration, login, and session preservation.
+* **Patient Profile & Appointments:** Dedicated views to track appointment status, cancel visits, and update personal details.
+* **Instant Fallback Engine:** Built-in resilient caching ensuring 0ms doctor rendering even under low connectivity.
 
 ## 🎯 Primary Users
 
