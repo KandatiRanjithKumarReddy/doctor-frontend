@@ -1,17 +1,15 @@
-import { createContext } from "react";
-import { doctors } from "../assets/assets";
+import { createContext, useState, useEffect } from "react";
+import { doctors as initialDoctors, doc16, doc17, doc18 } from "../assets/assets";
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { useState } from "react";
-import { useEffect } from "react";
 
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
 
-  const currencySymbol = '$'
+  const currencySymbol = '₹'
   const backendUrl = import.meta.env.VITE_BACKEND_URL
-  const [doctors, setDoctors] = useState([])
+  const [doctors, setDoctors] = useState(initialDoctors || [])
   const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : false)
   const [userData, setUserData] = useState(false)
 
@@ -22,7 +20,19 @@ const AppContextProvider = (props) => {
 
       const { data } = await axios.get(backendUrl + '/api/doctor/list')
       if (data.success) {
-        setDoctors(data.doctors)
+        const gastroFallback = {
+          'dr. arthur conners': doc16,
+          'dr. elena vance': doc17,
+          'dr. marcus brody': doc18
+        }
+        const sanitized = data.doctors.map((item) => {
+          const lower = item.name ? item.name.toLowerCase().trim() : ''
+          if ((!item.image || item.image.includes('prescripto/doc')) && gastroFallback[lower]) {
+            return { ...item, image: gastroFallback[lower] }
+          }
+          return item
+        })
+        setDoctors(sanitized)
       } else {
         toast.error(data.message)
       }

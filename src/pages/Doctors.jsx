@@ -1,25 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
+import { assets } from '../assets/assets'
 
 const Doctors = () => {
 
   const { speciality } = useParams()
-  const [filterDoc, setFilterDoc] = useState([])
   const [showFilter, setShowFilter] = useState(false)
   const navigate = useNavigate()
   const { doctors } = useContext(AppContext)
 
-  const applyFilter = () => {
+  const filterDoc = useMemo(() => {
     if (speciality) {
-      setFilterDoc(doctors.filter(doc => doc.speciality === speciality))
-    } else {
-      setFilterDoc(doctors)
+      return doctors.filter(doc => doc.speciality.toLowerCase() === speciality.toLowerCase())
     }
-  }
-
-  useEffect(() => {
-    applyFilter()
+    return doctors
   }, [doctors, speciality])
 
   return (
@@ -37,28 +32,38 @@ const Doctors = () => {
           <p onClick={() => speciality === 'Gastroenterologist' ? navigate('/doctors') : navigate('/doctors/Gastroenterologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Gastroenterologist' ? 'bg-indigo-100 text-black' : ''}`}>Gastroenterologist</p>
         </div>
 
-        <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
-          {
-            filterDoc.map((item, index) => (
-              <div onClick={() => navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                <img className='bg-blue-50' src={item.image} alt="" />
-                <div className='p-4'>
-                  <div
-                    className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-600'
-                      }`}
-                  >
-                    <p
-                      className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-600'
-                        } rounded-full`}
-                    ></p>
-                    <p>{item.available ? 'Available' : 'Not Available'}</p>
+        <div className='w-full'>
+          {filterDoc.length === 0 ? (
+            <div className='flex flex-col items-center justify-center py-16 text-gray-500'>
+              <p className='text-lg font-medium'>No doctors found in this specialty.</p>
+              <p className='text-sm mt-1'>Please try selecting another specialty or view all doctors.</p>
+              <button onClick={() => navigate('/doctors')} className='mt-4 px-6 py-2 bg-primary text-white text-sm rounded-full'>
+                View All Doctors
+              </button>
+            </div>
+          ) : (
+            <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
+              {filterDoc.map((item, index) => (
+                <div onClick={() => navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
+                  <img loading="lazy" decoding="async" className='bg-blue-50 w-full object-cover' src={item.image} alt={item.name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = assets.profile_pic }} />
+                  <div className='p-4'>
+                    <div
+                      className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-600'
+                        }`}
+                    >
+                      <p
+                        className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-600'
+                          } rounded-full`}
+                      ></p>
+                      <p>{item.available ? 'Available' : 'Not Available'}</p>
+                    </div>
+                    <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
+                    <p className='text-gray-600 text-sm'>{item.speciality}</p>
                   </div>
-                  <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
-                  <p className='text-gray-600 text-sm'>{item.speciality}</p>
                 </div>
-              </div>
-            ))
-          }
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ const Appointment = () => {
   const [docSlots, setDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const fetchDocInfo = () => {
     const doctor = doctors.find(doc => doc._id === docId);
@@ -22,8 +23,8 @@ const Appointment = () => {
   };
 
   const getAvailableSlots = async () => {
-    setDocSlots([]);
     let today = new Date();
+    let allSlots = [];
 
     for (let i = 0; i < 7; i++) {
       let currentDate = new Date(today);
@@ -44,33 +45,42 @@ const Appointment = () => {
       let timeSlots = [];
       while (currentDate < endTime) {
         let formattedTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        let day = currentDate.getDate()
-        let month = currentDate.getMonth() + 1
-        let year = currentDate.getFullYear()
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
 
-        const slotDate = day + '_' + month + '_' + year
-        const slotTime = formattedTime
+        const slotDate = day + '_' + month + '_' + year;
+        const slotTime = formattedTime;
 
-        const isSlotAvailable = docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime) ? false : true
+        const isSlotAvailable = !(docInfo?.slots_booked && docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slotTime));
         if (isSlotAvailable) {
-
-          timeSlots.push({ datetime: new Date(currentDate), time: formattedTime })
+          timeSlots.push({ datetime: new Date(currentDate), time: formattedTime });
         }
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
-      setDocSlots(prev => [...prev, timeSlots]);
+      allSlots.push(timeSlots);
     }
+    setDocSlots(allSlots);
   }
 
   const bookAppointment = async () => {
-
     if (!token) {
       toast.warn('Login to book appointment')
       return navigate('/login')
     }
 
-    try {
+    if (!slotTime) {
+      return toast.warn('Please select a time slot')
+    }
 
+    if (!docSlots[slotIndex] || docSlots[slotIndex].length === 0) {
+      return toast.warn('No available slots on this day')
+    }
+
+    if (isSubmitting) return
+    setIsSubmitting(true)
+
+    try {
       const date = docSlots[slotIndex][0].datetime
 
       let day = date.getDate()
@@ -92,6 +102,8 @@ const Appointment = () => {
     } catch (error) {
       console.log(error)
       toast.error(error.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -113,7 +125,7 @@ const Appointment = () => {
       {/* Doctor Details */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div>
-          <img className='bg-primary w-full sm:max-w-72 rounded-lg' src={docInfo.image} alt="" />
+          <img className='bg-primary w-full sm:max-w-72 rounded-lg object-cover' src={docInfo.image} alt={docInfo.name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = assets.profile_pic }} />
         </div>
 
         <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
@@ -165,8 +177,8 @@ const Appointment = () => {
           ))}
         </div>
 
-        <button onClick={bookAppointment} className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6">
-          Book an appointment
+        <button disabled={isSubmitting} onClick={bookAppointment} className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6 disabled:opacity-50">
+          {isSubmitting ? 'Booking...' : 'Book an appointment'}
         </button>
       </div>
 

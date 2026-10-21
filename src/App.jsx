@@ -15,9 +15,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    
     <div className='mx-4 sm:mx-[10%]'>
-      <ToastContainer/>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        limit={3}
+      />
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>

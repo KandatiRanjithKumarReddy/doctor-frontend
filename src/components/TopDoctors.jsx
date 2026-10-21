@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
+import { assets } from '../assets/assets'
 
 const TopDoctors = () => {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ const TopDoctors = () => {
             className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
             key={index}
           >
-            <img className="bg-blue-50" src={item.image} alt="" />
+            <img loading="lazy" decoding="async" className="bg-blue-50 w-full object-cover" src={item.image} alt={item.name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = assets.profile_pic }} />
             <div className="p-4">
               <div
                 className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-600'

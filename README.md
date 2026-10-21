@@ -1,51 +1,62 @@
-# Frontend - Doctor Appointment Booking System
+# Frontend - MeetOurDoctor Healthcare Appointment Booking System
 
 ## ✨ Overview
 
-The **Frontend** application is the patient-facing interface of the appointment booking system. It allows users to explore doctors, book appointments, and manage their personal profiles.
+The **Frontend** application is the patient-facing interface of the MeetOurDoctor platform. It allows users to explore trusted doctors by medical specialty, book appointment slots, make secure online payments via Razorpay, and manage personal profiles and booking history.
 
 **Key Points:**
 
-* Provides an intuitive and responsive interface for patients.
-* Facilitates user registration, login, and secure session handling.
-* Allows browsing of doctors by specialty and availability.
-* Supports appointment booking, viewing, and cancellation.
-* Maintains a personalized user dashboard with appointment history.
-* Implements real-time updates for appointment status and notifications.
-* Designed with a modular, component-based architecture for scalability.
+* Intuitive, responsive interface tailored for healthcare seekers.
+* User registration, login, and secure JWT session handling.
+* Doctor directory with real-time filtering across 6 specialties.
+* 7-day appointment slot picker with 30-minute intervals.
+* Integrated Razorpay payment gateway for online consultation payments.
+* Profile management and appointment history tracking.
+* Responsive design optimized for desktop and mobile devices.
 
-## 🎯 Purpose & User Roles
+## 🎯 Primary Users
 
-**Primary Users:**
+* **Patients / End Users:** Browse doctors, schedule appointments, pay online, track status, and cancel bookings.
 
-* Patients / End users
+## ⚙️ Environment Variables
 
-**Responsibilities:**
+Create a `.env` file in the `frontend` root with the following keys:
 
-* Register and authenticate securely.
-* Browse and filter doctors by specialty.
-* Book and manage appointments.
-* Track appointment status and history.
-* Update personal profile information.
+```env
+VITE_BACKEND_URL=http://localhost:4000
+VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
+VITE_ADMIN_PANEL_URL=http://localhost:5174
+```
 
-## 🔋 Key Features
+> **Note:** Ensure `VITE_BACKEND_URL` does NOT contain a trailing slash.
 
-* Secure user authentication
-* Doctor listing with filtering and search
-* Appointment booking and cancellation
-* Integrated Payment Gateway
-* Real-time status updates and notifications
-* Personalized user dashboard
-* Mobile-friendly, responsive design
-* Component-driven UI for maintainability
- 
-## ⚙️ Tech Stack
+## 🚀 Getting Started
 
-* React
-* React Router
-* Tailwind CSS
-* Context (state management)
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start development server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## 🛠 Tech Stack
+
+* **React 19**
+* **Vite 7**
+* **React Router Dom 7**
+* **Tailwind CSS**
+* **Axios**
+* **React Toastify**
 
 ## 📄 License
 
 MIT License
+
