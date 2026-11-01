@@ -1,72 +1,142 @@
 import React, { useContext, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import { assets } from '../assets/assets'
+import DoctorCard from '../components/DoctorCard'
+import VaidyaFinder from '../components/VaidyaFinder'
+
+const SPECIALTIES = [
+  'General physician',
+  'Gynecologist',
+  'Dermatologist',
+  'Pediatricians',
+  'Neurologist',
+  'Gastroenterologist',
+]
 
 const Doctors = () => {
-
   const { speciality } = useParams()
+  const [searchParams] = useSearchParams()
   const [showFilter, setShowFilter] = useState(false)
   const navigate = useNavigate()
   const { doctors } = useContext(AppContext)
 
+  const initialVaidyaOpen = searchParams.get('vaidya') === '1'
+  const initialVaidyaQuery = searchParams.get('q') || ''
+
   const filterDoc = useMemo(() => {
     if (speciality) {
-      return doctors.filter(doc => doc.speciality.toLowerCase() === speciality.toLowerCase())
+      return doctors.filter(
+        (doc) => doc.speciality.toLowerCase() === speciality.toLowerCase()
+      )
     }
     return doctors
   }, [doctors, speciality])
 
+  const handleSelectSpecialty = (spec) => {
+    if (speciality && speciality.toLowerCase() === spec.toLowerCase()) {
+      navigate('/doctors')
+    } else {
+      navigate(`/doctors/${spec}`)
+    }
+    setShowFilter(false)
+  }
+
   return (
-    <div>
-      <p className='text-gray-600'>Browse through the doctors specialist.</p>
+    <section className="py-4 sm:py-6">
+      <div className="mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+          {speciality ? `${speciality} Specialists` : 'All Specialist Doctors'}
+        </h1>
+        <p className="text-base text-gray-600 dark:text-neutral-400 mt-1">
+          Browse verified medical specialists across India or ask Vaidya to help find the right specialist.
+        </p>
+      </div>
 
-      <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-        <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={() => setShowFilter(prev => !prev)}>Filters</button>
-        <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
-          <p onClick={() => speciality === 'General physician' ? navigate('/doctors') : navigate('/doctors/General physician')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'General physician' ? 'bg-indigo-100 text-black' : ''}`}>General physician</p>
-          <p onClick={() => speciality === 'Gynecologist' ? navigate('/doctors') : navigate('/doctors/Gynecologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Gynecologist' ? 'bg-indigo-100 text-black' : ''}`}>Gynecologist</p>
-          <p onClick={() => speciality === 'Dermatologist' ? navigate('/doctors') : navigate('/doctors/Dermatologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Dermatologist' ? 'bg-indigo-100 text-black' : ''}`}>Dermatologist</p>
-          <p onClick={() => speciality === 'Pediatricians' ? navigate('/doctors') : navigate('/doctors/Pediatricians')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Pediatricians' ? 'bg-indigo-100 text-black' : ''}`}>Pediatricians</p>
-          <p onClick={() => speciality === 'Neurologist' ? navigate('/doctors') : navigate('/doctors/Neurologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Neurologist' ? 'bg-indigo-100 text-black' : ''}`}>Neurologist</p>
-          <p onClick={() => speciality === 'Gastroenterologist' ? navigate('/doctors') : navigate('/doctors/Gastroenterologist')} className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === 'Gastroenterologist' ? 'bg-indigo-100 text-black' : ''}`}>Gastroenterologist</p>
-        </div>
+      {/* Vaidya AI Specialty & Doctor Finder */}
+      <VaidyaFinder initialOpen={initialVaidyaOpen} initialQuery={initialVaidyaQuery} />
 
-        <div className='w-full'>
+      <div className="flex flex-col md:flex-row items-start gap-6">
+        {/* Mobile Filter Toggle */}
+        <button
+          type="button"
+          className={`py-2.5 px-5 border rounded-xl text-[15px] font-medium transition-all md:hidden flex items-center gap-2 cursor-pointer ${
+            showFilter
+              ? 'bg-primary text-white border-primary'
+              : 'bg-white dark:bg-[#141414] text-gray-700 dark:text-neutral-200 border-gray-300 dark:border-neutral-700'
+          }`}
+          onClick={() => setShowFilter((prev) => !prev)}
+        >
+          <span>{showFilter ? 'Hide Specialties' : 'Filter by Specialty'}</span>
+        </button>
+
+        {/* Specialty Sidebar */}
+        <aside
+          className={`w-full md:w-60 shrink-0 flex-col gap-2.5 text-[15px] ${
+            showFilter ? 'flex' : 'hidden md:flex'
+          }`}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              navigate('/doctors')
+              setShowFilter(false)
+            }}
+            className={`w-full text-left px-4 py-2.5 border rounded-xl font-medium transition-all cursor-pointer ${
+              !speciality
+                ? 'bg-indigo-100 text-gray-900 border-indigo-200 dark:bg-primary dark:text-white dark:border-primary shadow-sm'
+                : 'bg-white dark:bg-[#111111] border-gray-300 dark:border-neutral-800 text-gray-700 dark:text-neutral-300 hover:border-primary/60'
+            }`}
+          >
+            All Specialties
+          </button>
+
+          {SPECIALTIES.map((spec) => {
+            const isActive = speciality?.toLowerCase() === spec.toLowerCase()
+            return (
+              <button
+                type="button"
+                key={spec}
+                onClick={() => handleSelectSpecialty(spec)}
+                className={`w-full text-left px-4 py-2.5 border rounded-xl font-medium transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-indigo-100 text-gray-900 border-indigo-200 dark:bg-primary dark:text-white dark:border-primary shadow-sm'
+                    : 'bg-white dark:bg-[#111111] border-gray-300 dark:border-neutral-800 text-gray-700 dark:text-neutral-300 hover:border-primary/60'
+                }`}
+              >
+                {spec}
+              </button>
+            )
+          })}
+        </aside>
+
+        {/* Doctors Grid */}
+        <div className="flex-1 w-full min-w-0">
           {filterDoc.length === 0 ? (
-            <div className='flex flex-col items-center justify-center py-16 text-gray-500'>
-              <p className='text-lg font-medium'>No doctors found in this specialty.</p>
-              <p className='text-sm mt-1'>Please try selecting another specialty or view all doctors.</p>
-              <button onClick={() => navigate('/doctors')} className='mt-4 px-6 py-2 bg-primary text-white text-sm rounded-full'>
+            <div className="flex flex-col items-center justify-center py-16 px-4 text-center rounded-2xl border border-dashed border-gray-300 dark:border-neutral-800 bg-gray-50 dark:bg-[#111111]">
+              <p className="text-lg font-semibold text-gray-800 dark:text-neutral-100">
+                No doctors found in this specialty
+              </p>
+              <p className="text-base text-gray-600 dark:text-neutral-400 mt-1">
+                Please try selecting another specialty or view all available doctors.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/doctors')}
+                className="mt-5 px-7 py-2.5 bg-primary hover:bg-primary/90 text-white font-medium text-base rounded-full transition-all cursor-pointer"
+              >
                 View All Doctors
               </button>
             </div>
           ) : (
-            <div className='w-full grid grid-cols-auto gap-4 gap-y-6'>
-              {filterDoc.map((item, index) => (
-                <div onClick={() => navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                  <img loading="lazy" decoding="async" className='bg-blue-50 w-full object-cover' src={item.image} alt={item.name} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = assets.profile_pic }} />
-                  <div className='p-4'>
-                    <div
-                      className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-600'
-                        }`}
-                    >
-                      <p
-                        className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-600'
-                          } rounded-full`}
-                      ></p>
-                      <p>{item.available ? 'Available' : 'Not Available'}</p>
-                    </div>
-                    <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
-                    <p className='text-gray-600 text-sm'>{item.speciality}</p>
-                  </div>
-                </div>
+            <div className="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-auto gap-5">
+              {filterDoc.map((item) => (
+                <DoctorCard key={item._id} doctor={item} />
               ))}
             </div>
           )}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

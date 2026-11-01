@@ -2,9 +2,28 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MeetOurDoctor</title>
+    <title>Prescripto - Trusted Doctor Appointments</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('prescripto-theme');
+          var isDark = saved === 'dark';
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('dark');
+            root.setAttribute('data-theme', 'dark');
+            root.style.colorScheme = 'dark';
+          } else {
+            root.classList.remove('dark');
+            root.setAttribute('data-theme', 'light');
+            root.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

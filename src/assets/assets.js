@@ -40,7 +40,6 @@ import Gynecologist from './Gynecologist.svg'
 import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
 
-
 export const assets = {
     appointment_img,
     header_img,
@@ -96,254 +95,289 @@ export const specialityData = [
 export const doctors = [
     {
         _id: 'doc1',
-        name: 'Dr. Richard James',
+        name: 'Dr. Rohan Deshmukh',
         image: doc1,
+        available: true,
         speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Richard James has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        fees: 500,
+        degree: 'MBBS, MD (Internal Medicine)',
+        experience: '8 Years',
+        about: 'Dr. Rohan Deshmukh is an internal medicine specialist with over 8 years of outpatient and hospital care experience. He focuses on viral and seasonal fevers, hypertension, thyroid disorders, diabetes management, and preventive adult health checkups. Patients appreciate his clear explanations, thorough symptom review, and practical lifestyle guidance.',
+        fees: 700,
         address: {
-            line1: '12, 100 Feet Road, Indiranagar',
+            clinic: 'Manipal Hospital, Indiranagar',
+            line1: 'Manipal Hospital, 100 Feet Road, Indiranagar',
             line2: 'Bengaluru, Karnataka - 560038'
         }
     },
     {
         _id: 'doc2',
-        name: 'Dr. Emily Larson',
+        name: 'Dr. Sunita Rao',
         image: doc2,
+        available: true,
         speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Emily Larson provides compassionate gynecological care, prenatal evaluations, and specialized women wellness treatments.',
-        fees: 600,
+        degree: 'MBBS, MS (Obstetrics & Gynecology)',
+        experience: '12 Years',
+        about: 'Dr. Sunita Rao brings 12 years of dedicated experience in women’s health, prenatal care, PCOS management, and menstrual wellness. She provides evidence-based obstetric consultations, pre-pregnancy counseling, and routine gynecological screenings in a calm, supportive clinic setting.',
+        fees: 1500,
         address: {
-            line1: 'Plot 45, Road No. 36, Jubilee Hills',
+            clinic: 'Fernandez Stork Home, Jubilee Hills',
+            line1: 'Fernandez Stork Home, Road No. 36, Jubilee Hills',
             line2: 'Hyderabad, Telangana - 500033'
         }
     },
     {
         _id: 'doc3',
-        name: 'Dr. Sarah Patel',
+        name: 'Dr. Siddharth Patel',
         image: doc3,
+        available: true,
         speciality: 'Dermatologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Sarah Patel focuses on clinical dermatology, skincare therapies, and evidence-based solutions for chronic skin disorders.',
-        fees: 500,
+        degree: 'MBBS, MD (Dermatology, Venereology & Leprosy)',
+        experience: '7 Years',
+        about: 'Dr. Siddharth Patel is a board-certified clinical dermatologist specializing in persistent acne, eczema, fungal skin infections, hair fall evaluation, and allergic rashes. He emphasizes accurate root-cause assessment and simple, sustainable skincare routines tailored to Indian skin types and climates.',
+        fees: 1000,
         address: {
-            line1: 'Shop 14, Linking Road, Bandra West',
+            clinic: 'Lilavati Skin & Derma Care, Bandra West',
+            line1: 'Lilavati Skin & Derma Care, Linking Road, Bandra West',
             line2: 'Mumbai, Maharashtra - 400050'
         }
     },
     {
         _id: 'doc4',
-        name: 'Dr. Christopher Lee',
+        name: 'Dr. Arjun Malhotra',
         image: doc4,
+        available: true,
         speciality: 'Pediatricians',
-        degree: 'MBBS',
-        experience: '2 Years',
-        about: 'Dr. Christopher Lee is dedicated to pediatric wellness, routine vaccinations, and developmental milestones monitoring for children.',
-        fees: 500,
+        degree: 'MBBS, MD (Pediatrics)',
+        experience: '6 Years',
+        about: 'Dr. Arjun Malhotra cares for newborns, infants, and school-age children with a gentle, parent-friendly approach. His consultations cover childhood immunizations, growth and nutrition tracking, childhood allergies, and acute respiratory or digestive illnesses, helping parents feel confident and well-informed.',
+        fees: 800,
         address: {
-            line1: '22, Ring Road, Lajpat Nagar IV',
-            line2: 'New Delhi, Delhi - 110024'
+            clinic: "Rainbow Children's Hospital, Malviya Nagar",
+            line1: "Rainbow Children's Hospital, Geetanjali Marg, Malviya Nagar",
+            line2: 'New Delhi, Delhi - 110017'
         }
     },
     {
         _id: 'doc5',
-        name: 'Dr. Jennifer Garcia',
+        name: 'Dr. Niharika Iyer',
         image: doc5,
+        available: true,
         speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Jennifer Garcia specializes in neurological assessments, headache management, and comprehensive disorders of the nervous system.',
-        fees: 800,
+        degree: 'MBBS, MD, DM (Neurology)',
+        experience: '8 Years',
+        about: 'Dr. Niharika Iyer specializes in clinical neurology with particular focus on chronic migraines, vertigo, nerve pain, sleep-related headaches, and seizure disorders. She combines structured neurological evaluations with clear long-term care plans to help patients regain daily comfort.',
+        fees: 2000,
         address: {
-            line1: '88, Anna Salai, T. Nagar',
-            line2: 'Chennai, Tamil Nadu - 600017'
+            clinic: 'Kauvery Hospital Neuro Centre, Alwarpet',
+            line1: 'Kauvery Hospital Neuro Centre, TTK Road, Alwarpet',
+            line2: 'Chennai, Tamil Nadu - 600018'
         }
     },
     {
         _id: 'doc6',
-        name: 'Dr. Andrew Williams',
+        name: 'Dr. Rajeshwar Joshi',
         image: doc6,
+        available: true,
         speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Andrew Williams provides in-depth neurological consultations focusing on stroke rehabilitation and neuromuscular therapy.',
-        fees: 800,
+        degree: 'MBBS, MD, DM (Neurology)',
+        experience: '13 Years',
+        about: 'Dr. Rajeshwar Joshi has 13 years of experience evaluating stroke recovery, peripheral neuropathy, tremors, movement disorders, and spine-related nerve compression. He takes a methodical, patient-centered approach to neurological testing and coordinated follow-up rehabilitation.',
+        fees: 2600,
         address: {
-            line1: '15, FC Road, Shivajinagar',
-            line2: 'Pune, Maharashtra - 411005'
+            clinic: 'Ruby Hall Clinic, Sassoon Road',
+            line1: 'Ruby Hall Clinic, 40 Sassoon Road, Sangamvadi',
+            line2: 'Pune, Maharashtra - 411001'
         }
     },
     {
         _id: 'doc7',
-        name: 'Dr. Christopher Davis',
+        name: 'Dr. Vikramaditya Sen',
         image: doc7,
+        available: true,
         speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Christopher Davis has extensive experience in general internal medicine, lifestyle condition management, and preventive screenings.',
-        fees: 500,
+        degree: 'MBBS, MD (General Medicine), FRCP',
+        experience: '16 Years',
+        about: 'Dr. Vikramaditya Sen is a senior general physician with 16 years of experience managing complex multi-system illnesses, blood pressure and lipid disorders, adult vaccinations, and unexplained fatigue or prolonged fevers. He focuses on careful clinical listening and avoiding unnecessary tests.',
+        fees: 900,
         address: {
-            line1: '104, Salt Lake Sector V',
-            line2: 'Kolkata, West Bengal - 700091'
+            clinic: 'Apollo Multispeciality Hospital, Salt Lake',
+            line1: 'Apollo Multispeciality Hospital, Canal Circular Road, Salt Lake',
+            line2: 'Kolkata, West Bengal - 700054'
         }
     },
     {
         _id: 'doc8',
-        name: 'Dr. Timothy White',
+        name: 'Dr. Karthik Subramanian',
         image: doc8,
+        available: true,
         speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Timothy White is committed to obstetric consultations, maternal care, and preventive health guidance for women of all age groups.',
-        fees: 600,
+        degree: 'MBBS, MD (OBG), DNB',
+        experience: '9 Years',
+        fees: 1200,
         address: {
-            line1: '31, Beach Road, Maharanipeta',
+            clinic: "CARE Hospitals Women's Centre, Ram Nagar",
+            line1: "CARE Hospitals Women's Centre, Waltair Main Road, Ram Nagar",
             line2: 'Visakhapatnam, Andhra Pradesh - 530002'
         }
     },
     {
         _id: 'doc9',
-        name: 'Dr. Ava Mitchell',
+        name: 'Dr. Meera Krishnan',
         image: doc9,
+        available: true,
         speciality: 'Dermatologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Ava Mitchell is skilled in contemporary dermatological therapies, allergy identification, and personalized skin treatment plans.',
-        fees: 500,
+        degree: 'MBBS, DDVL, Fellowship in Clinical Dermatology',
+        experience: '6 Years',
+        about: 'Dr. Meera Krishnan treats everyday and chronic skin, hair, and nail concerns including pigmentation, urticaria (hives), psoriasis, dandruff, and teenage acne. She focuses on gentle, evidence-backed dermatology plans and educates patients on sun protection and trigger prevention.',
+        fees: 900,
         address: {
-            line1: '56, CG Road, Navrangpura',
+            clinic: 'Zydus Skin & Wellness Clinic, Navrangpura',
+            line1: 'Zydus Skin & Wellness Clinic, CG Road, Navrangpura',
             line2: 'Ahmedabad, Gujarat - 380009'
         }
     },
     {
         _id: 'doc10',
-        name: 'Dr. Jeffrey King',
+        name: 'Dr. Pranav Kulkarni',
         image: doc10,
+        available: true,
         speciality: 'Pediatricians',
-        degree: 'MBBS',
-        experience: '2 Years',
-        about: 'Dr. Jeffrey King provides compassionate care for infants and adolescents, specializing in pediatric diagnostics and seasonal health.',
-        fees: 500,
+        degree: 'MBBS, DCH, DNB (Pediatrics)',
+        experience: '10 Years',
+        about: 'Dr. Pranav Kulkarni has spent a decade caring for infants, toddlers, and adolescents across outpatient pediatrics and developmental clinics. He advises families on childhood asthma, seasonal infections, picky eating, milestone checks, and catch-up vaccination schedules.',
+        fees: 1200,
         address: {
-            line1: '18, Hazratganj, Park Road',
-            line2: 'Lucknow, Uttar Pradesh - 226001'
+            clinic: 'Medanta Super Specialty Clinic, Gomti Nagar',
+            line1: 'Medanta Super Specialty Clinic, Vibhuti Khand, Gomti Nagar',
+            line2: 'Lucknow, Uttar Pradesh - 226010'
         }
     },
     {
         _id: 'doc11',
-        name: 'Dr. Zoe Kelly',
+        name: 'Dr. Nandini Chatterjee',
         image: doc11,
+        available: true,
         speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Zoe Kelly provides specialized neurological diagnostic workups, migraine therapies, and continuous neuro-wellness care.',
-        fees: 800,
+        degree: 'MBBS, MD, DNB (Neurology), Stroke Fellowship',
+        experience: '15 Years',
+        about: 'Dr. Nandini Chatterjee is a senior consultant neurologist with 15 years of expertise in stroke prevention, epilepsy, memory and cognitive evaluations, and refractory headache syndromes. She provides detailed diagnostic reviews and coordinates closely with families on long-term neurological wellness.',
+        fees: 3500,
         address: {
-            line1: '29, MG Road, Ashok Nagar',
-            line2: 'Bengaluru, Karnataka - 560001'
+            clinic: 'Fortis Hospital, Bannerghatta Road',
+            line1: 'Fortis Hospital, 154/9 Bannerghatta Main Road',
+            line2: 'Bengaluru, Karnataka - 560076'
         }
     },
     {
         _id: 'doc12',
-        name: 'Dr. Patrick Harris',
+        name: 'Dr. Harsha Vardhan Reddy',
         image: doc12,
+        available: true,
         speciality: 'Neurologist',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Patrick Harris has a proven track record in nerve function assessments, spine-related nerve issues, and holistic neurology.',
-        fees: 800,
+        degree: 'MBBS, MD, DM (Neurology), FINR',
+        experience: '19 Years',
+        about: 'Dr. Harsha Vardhan Reddy is a senior director-level neurologist with 19 years of clinical experience in complex neurovascular conditions, Parkinson’s disease, demyelinating disorders, and second-opinion neurological consultations. Known for his thorough diagnostic precision, he guides patients through complex neurological reports in clear, reassuring language.',
+        fees: 5000,
         address: {
-            line1: '72, Hitech City Main Road, Madhapur',
+            clinic: 'Yashoda Hospitals Neurosciences Institute, Hitec City',
+            line1: 'Yashoda Hospitals Neurosciences Institute, Hitec City Main Road',
             line2: 'Hyderabad, Telangana - 500081'
         }
     },
     {
         _id: 'doc13',
-        name: 'Dr. Chloe Evans',
+        name: 'Dr. Kavya Nair',
         image: doc13,
+        available: true,
         speciality: 'General physician',
-        degree: 'MBBS',
-        experience: '4 Years',
-        about: 'Dr. Chloe Evans provides patient-centric primary consultations, routine health checkups, and chronic ailment therapies.',
+        degree: 'MBBS, DNB (Family Medicine)',
+        experience: '5 Years',
+        about: 'Dr. Kavya Nair practices comprehensive family and primary medicine, helping adults and seniors with acute infections, blood sugar and blood pressure monitoring, nutritional deficiencies, and annual health report reviews. Her consultations focus on practical everyday care and early preventive action.',
         fees: 500,
         address: {
-            line1: '41, Senapati Bapat Marg, Lower Parel',
-            line2: 'Mumbai, Maharashtra - 400013'
+            clinic: 'Kokilaben Ambani Family Clinic, Andheri West',
+            line1: 'Kokilaben Ambani Family Clinic, Four Bungalows, Andheri West',
+            line2: 'Mumbai, Maharashtra - 400053'
         }
     },
     {
         _id: 'doc14',
-        name: 'Dr. Ryan Martinez',
+        name: 'Dr. Nikhil Verma',
         image: doc14,
+        available: true,
         speciality: 'Gynecologist',
-        degree: 'MBBS',
-        experience: '3 Years',
-        about: 'Dr. Ryan Martinez delivers comprehensive gynecological consultations, fertility counseling, and post-natal support.',
-        fees: 600,
+        degree: 'MBBS, MS (OBG), Fellowship in Reproductive Medicine',
+        experience: '14 Years',
+        about: 'Dr. Nikhil Verma has 14 years of specialized experience in reproductive health, fertility evaluation, minimally invasive gynecological consultations, and hormonal health. He works closely with couples and individual patients to create transparent, personalized care plans.',
+        fees: 2200,
         address: {
-            line1: '63, South Extension Part 2',
-            line2: 'New Delhi, Delhi - 110049'
+            clinic: 'Max Smart Super Speciality Hospital, Saket',
+            line1: 'Max Smart Super Speciality Hospital, Press Enclave Marg, Saket',
+            line2: 'New Delhi, Delhi - 110017'
         }
     },
     {
         _id: 'doc15',
-        name: 'Dr. Amelia Hill',
+        name: 'Dr. Ananya Reddy',
         image: doc15,
+        available: true,
         speciality: 'Dermatologist',
-        degree: 'MBBS',
-        experience: '1 Years',
-        about: 'Dr. Amelia Hill provides personalized dermatological care, acne management, and cosmetic dermatology counseling.',
-        fees: 500,
+        degree: 'MBBS, MD (Dermatology), FAAD',
+        experience: '11 Years',
+        about: 'Dr. Ananya Reddy brings 11 years of clinical dermatology experience managing stubborn acne scarring, melasma, chronic dermatitis, alopecia, and sensitive skin conditions. She combines thorough medical dermatology workups with safe, realistic treatment timelines.',
+        fees: 1600,
         address: {
-            line1: '9, KNK Road, Nungambakkam',
+            clinic: 'Apollo Skin & Hair Studio, Nungambakkam',
+            line1: 'Apollo Skin & Hair Studio, Khader Nawaz Khan Road, Nungambakkam',
             line2: 'Chennai, Tamil Nadu - 600034'
         }
     },
     {
         _id: 'doc16',
-        name: 'Dr. Arthur Conners',
+        name: 'Dr. Arvind Sharma',
         image: doc16,
+        available: true,
         speciality: 'Gastroenterologist',
-        degree: 'MBBS, MD - Gastroenterology',
-        experience: '5 Years',
-        about: 'Dr. Arthur Conners specializes in clinical digestive health, endoscopy, and inflammatory bowel diseases, focusing on preventative medicine and modern gastrointestinal care.',
-        fees: 900,
+        degree: 'MBBS, MD, DM (Medical Gastroenterology)',
+        experience: '15 Years',
+        about: 'Dr. Arvind Sharma is a senior medical gastroenterologist with 15 years of experience treating acid reflux (GERD), gastritis, irritable bowel syndrome (IBS), fatty liver disease, and inflammatory bowel conditions. He emphasizes dietary clarity alongside modern diagnostic gastroenterology.',
+        fees: 2000,
         address: {
-            line1: '14, 80 Feet Road, Koramangala 4th Block',
-            line2: 'Bengaluru, Karnataka - 560034'
+            clinic: 'Aster CMI Hospital, Hebbal',
+            line1: 'Aster CMI Hospital, NH 44, Sahakar Nagar, Hebbal',
+            line2: 'Bengaluru, Karnataka - 560092'
         }
     },
     {
         _id: 'doc17',
-        name: 'Dr. Elena Vance',
+        name: 'Dr. Sarah Jenkins',
         image: doc17,
+        available: true,
         speciality: 'Gastroenterologist',
-        degree: 'MBBS, FACG',
-        experience: '4 Years',
-        about: 'Dr. Elena Vance provides expert care in managing acid reflux, liver wellness, and general gastrointestinal evaluations with modern diagnostic strategies.',
-        fees: 1000,
+        degree: 'MBBS, MD, FACG (Gastroenterology & Hepatology)',
+        experience: '14 Years',
+        about: 'Dr. Sarah Jenkins is a consultant gastroenterologist and hepatologist with 14 years of clinical experience in liver wellness, chronic indigestion, food intolerances, peptic ulcer care, and preventive digestive screenings. She is known for structured symptom tracking and clear nutritional guidance.',
+        fees: 2800,
         address: {
-            line1: '7th Phase, KPHB Colony, Kukatpally',
-            line2: 'Hyderabad, Telangana - 500072'
+            clinic: 'AIG Hospitals, Gachibowli',
+            line1: 'AIG Hospitals, Mindspace Road, Gachibowli',
+            line2: 'Hyderabad, Telangana - 500032'
         }
     },
     {
         _id: 'doc18',
-        name: 'Dr. Marcus Brody',
+        name: 'Dr. Alan Thompson',
         image: doc18,
+        available: true,
         speciality: 'Gastroenterologist',
-        degree: 'MBBS, MRCP',
-        experience: '6 Years',
-        about: 'Dr. Marcus Brody has extensive experience in digestive system wellness, nutritional therapies, and clinical gastroenterology consultations.',
-        fees: 1200,
+        degree: 'MD, FRCP (Senior Consultant Gastroenterologist)',
+        experience: '24 Years',
+        about: 'Dr. Alan Thompson is a senior visiting consultant gastroenterologist with 24 years of international and tertiary-hospital experience in complex pancreaticobiliary disorders, chronic liver disease, motility disorders, and second-opinion digestive consultations.',
+        fees: 4500,
         address: {
-            line1: '52, SV Road, Andheri West',
-            line2: 'Mumbai, Maharashtra - 400058'
+            clinic: 'Breach Candy Hospital Trust, South Mumbai',
+            line1: 'Breach Candy Hospital Trust, 60A Bhulabhai Desai Road',
+            line2: 'Mumbai, Maharashtra - 400026'
         }
     }
 ]
